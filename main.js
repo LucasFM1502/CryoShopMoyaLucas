@@ -37,11 +37,9 @@ const listadeJuegos = [ { ID: 1, nombre: "TLOU", precio: 2500, cantidad: 100},
                         { ID: 2, nombre: "L4D2", precio: 800, cantidad: 100},
                         { ID: 3, nombre: "Skyrim", precio: 1200, cantidad: 100}]
 
-
+let mostrarJuegos = ""
 listadeJuegos.forEach (el => {
-    console.log (el.ID)
-    console.log (el.nombre)
-    console.log (el.precio)
+    mostrarJuegos += " ID: " +el.ID + " Nombre: "+el.nombre + " Precio: $"+el.precio+"\n"
 
 })
 
@@ -52,7 +50,7 @@ alert ("Bienvenidx " +nombre)
 let mensajeFinal = ""
 
 do {
-
+  alert (mostrarJuegos)
   let id = prompt("Ingrese el ID del juego deseado.")
   if (!isNaN(id)) {
         if (listadeJuegos.some( juego => juego.ID == id)) {
