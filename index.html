@@ -4,33 +4,95 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./main.css">
-    <title>Proyecto JavaScript</title>
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
+
+    <section class="color_letra">
+        <h1 class="h1">Practicas CodeHouse</h1>
+        <h2 class="h2">JavaScript - CoderHouse</h2>
+        <br>
+        <p class="alinear2"> Preentrega03: </p>
+    </section>
+
+
+    <form>
+        <label for="city">Ciudad:</label>
+        <select id="city">
+            <option value="paris">París</option>
+            <option value="london">Londres</option>
+            <option value="rome">Roma</option>
+        </select>
     
-    <h1>Tercera Entrega de JavaScript</h1>
-
-    <h2> Tienda de Juegos Digitales.</h2>
-
-<section id="filtros">
-    <input type="number" id="precio_min" placeholder="Indique precio mínimo.">
-    <input type="text"  id="buscador" placeholder="Buscar">
-     <input type="number" id="precio_max" placeholder="Indique precio máximo.">
+        <label for="passengers">Cantidad de pasajeros:</label>
+        <input type="number" id="passengers" value="1" min="1">
     
-</section>
+        <label for="days">Cantidad de días de estancia:</label>
+        <input type="number" id="days" value="1" min="1">
+    
+        <button type="button" id="continue">Continuar</button>
+        <button type="button" id="finish">Finalizar</button>
+    </form>
+    
+    <div id="cart"></div>
 
-<br>
+   <!--  
+    
+    <div id="cart">
+        <table>
+            <tr>
+                <th>Ciudad</th>
+                <th>Pasajeros</th>
+                <th>Días de estancia</th>
+                <th>Precio base</th>
+                <th>Descuento</th>
+                <th>Total</th>
+            </tr>
+        </table>
+    </div>
+    -->
+    
+<div class="card-container">
+    <div class="card">
+        <img src="./assets/img-inicio/Amsterdam1.jpg">
+        <h2>Card 1 Title</h2>
+        <p>Card 1 Description</p>
+    </div>
+    <div class="card">
+        <img src="./assets/img-inicio/berlin1.jpg">
+        <h2>Card 2 Title</h2>
+        <p>Card 2 Description</p>
+    </div>
+    <div class="card">
+        <img src="./assets/img-inicio/barcelona2.jpg">
+        <h2>Card 2 Title</h2>
+        <p>Card 2 Description</p>
+    </div>
+    <div class="card">
+        <img src="./assets/img-inicio/londres5.webp">
+        <h2>Card 2 Title</h2>
+        <p>Card 2 Description</p>
+    </div>
+    <div class="card">
+        <img src="./assets/img-inicio/paris3.jpg">
+        <h2>Card 2 Title</h2>
+        <p>Card 2 Description</p>
+    </div>
+    <div class="card">
+        <img src="./assets/img-inicio/roma1.jpg">
+        <h2>Card 2 Title</h2>
+        <p>Card 2 Description</p>
+    </div>
+</div>
 
-<section id="productos_display">
+    <script src="./assets/js/main.js"></script>
 
-
-</section>
-
-
-
-
-
-    <script src="./main.js"></script>
 </body>
+<footer>
+    <h4 class="pie">Copyright © 2023
+        <br>All rights reserved</h4>
+
+</footer>
+
 </html>
