@@ -1,75 +1,88 @@
-
-class Juego {
-  constructor(nombre, precio){
-          this.nombre = nombre;
-          this.precio = precio;
-}
-}
-
-function TotalPrevio(array){
-      let total = 0;
-      array.forEach ( JuegoCompra => {
-        total = JuegoCompra.precio * JuegoCompra.cantidad
-      })
-        return total;
-}
-
-function Impuestos(precioArg) {
-    const IVA = 1.21
-    const servDigital = 0.05
-    const impPais = 0.08
-    const percepcion = 0.45
-    
-  
-    return (IVA + servDigital + impPais + percepcion) * precioArg
-}
-
-function Billetera(precioFinal) {
-      if (precioFinal > 6000) {
-        return "Ouch! Todo sea por vicear."
-      }else{
-        return "¡Bien ahi con los ahorros!"
-      }
-}
-
-const carritoCompra = [ ]
-const listadeJuegos = [ { ID: 1, nombre: "TLOU", precio: 2500, cantidad: 100},
-                        { ID: 2, nombre: "L4D2", precio: 800, cantidad: 100},
-                        { ID: 3, nombre: "Skyrim", precio: 1200, cantidad: 100}]
-
-let mostrarJuegos = ""
-listadeJuegos.forEach (el => {
-    mostrarJuegos += " ID: " +el.ID + " Nombre: "+el.nombre + " Precio: $"+el.precio+"\n"
-
-})
-
-
-let nombre = prompt("Bienvenidx a la tienda de juegos digitales para Argentina. Ingrese su nombre y apellido.")
-alert ("Bienvenidx " +nombre)
-
-let mensajeFinal = ""
-
-do {
-  alert (mostrarJuegos)
-  let id = prompt("Ingrese el ID del juego deseado.")
-  if (!isNaN(id)) {
-        if (listadeJuegos.some( juego => juego.ID == id)) {
-
-          let cantidad = prompt("¿Cuantos desea llevar?")
-          const JuegoCompra = (listadeJuegos.find( juego => juego.ID == id))
-          JuegoCompra.cantidad = cantidad;
-          carritoCompra.push(JuegoCompra)
-        }else{ alert ("ID no valido.")}
+class JuegosController {
+  constructor(){
+    this.listaJuegos = [ ]
   }
 
+  traerJuegos(){
+    let listaJSON = localStorage.getItem("listaJuegos")
+    if(listaJSON){
+    this.listaJuegos = JSON.parse(listaJSON)
+    }else{
+    this.listaJuegos = [ ]
+  }
+  }
 
-  mensajeFinal = prompt("Si ya ha finalizado con su compra ingrese \"SI\". De lo contrario ingrese cualquier caracter para continuar.").toUpperCase()
-}while (mensajeFinal != "SI")
+  renderDOM(nodo){
+    this.listaJuegos.forEach( juego => {
+      nodo.innerHTML += 
+      `<div class="cards"><h3>${juego.nombre}</h3> 
+      <p>$${juego.precio}</p> 
+      <p>${juego.descripcion}</p></div>`
+    
+  });
+  }
 
-let precioenArg = alert("Su juego previo a impuestos es de $" + TotalPrevio(carritoCompra))
-let precioArg = TotalPrevio(carritoCompra)
+  filtrarporMIN(precio){
+    this.listaJuegos = this.listaJuegos.filter ( juego => juego.precio >= precio);
+  }
+
+  filtrarporMAX(precio){
+    this.listaJuegos = this.listaJuegos.filter ( juego => juego.precio <= precio);
+  }
+
+  filtrarporPAL(palabra){
+    this.listaJuegos = this.listaJuegos.filter ( juego => juego.nombre.includes(palabra))
+  }
+
+  limpiarDOM(nodo){
+      nodo.innerHTML = ""
+  }
+
+}
+
+//DOM
+const contenedorProductos = document.getElementById("productos_display")
+const precio_max = document.getElementById("precio_max")
+const precio_min = document.getElementById("precio_min")
+const buscador = document.getElementById("buscador")
 
 
-precioFinal = Impuestos(precioArg)
-alert("El valor del juego con impuestos agregados es de $" + precioFinal + "\nGracias por su compra!")
-alert(Billetera(precioFinal))
+
+//APP
+const controladorJuegos = new JuegosController()
+controladorJuegos.traerJuegos()
+controladorJuegos.renderDOM(contenedorProductos)
+
+//FILTROS
+precio_max.addEventListener("change", () =>{
+  if(precio_max.value > 0){
+  controladorJuegos.traerJuegos()
+  controladorJuegos.filtrarporMAX ( precio_max.value )
+  controladorJuegos.limpiarDOM (contenedorProductos)
+  controladorJuegos.renderDOM (contenedorProductos)
+}else{
+  controladorJuegos.traerJuegos()
+  controladorJuegos.limpiarDOM (contenedorProductos)
+  controladorJuegos.renderDOM (contenedorProductos)
+}
+} )
+
+precio_min.addEventListener("change", () =>{
+if(precio_min.value > 0){
+  controladorJuegos.traerJuegos()
+  controladorJuegos.filtrarporMIN ( precio_min.value )
+  controladorJuegos.limpiarDOM (contenedorProductos)
+  controladorJuegos.renderDOM (contenedorProductos)
+}else{
+  controladorJuegos.traerJuegos()
+  controladorJuegos.limpiarDOM (contenedorProductos)
+  controladorJuegos.renderDOM (contenedorProductos)
+}
+} )
+
+buscador.addEventListener ("change", () =>{
+  controladorJuegos.traerJuegos()
+  controladorJuegos.filtrarporPAL (buscador.value)
+  controladorJuegos.limpiarDOM (contenedorProductos)
+  controladorJuegos.renderDOM (contenedorProductos)
+})

@@ -9,8 +9,21 @@ h1 {
     font-weight: bolder;
 }
 
-p { 
+h2 { 
     text-align: center;
     color: yellow;
     font-weight: bold;
+}
+
+.cards {
+    color: black;
+    background-color: violet;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px black;
+}
+
+#filtros {
+    display: flex;
+    justify-content: space-evenly;
 }
