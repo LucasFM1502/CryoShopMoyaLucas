@@ -1,0 +1,72 @@
+/* TEXTOS */
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    color: white;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+header {
+    background-image: url(../img/fondo\ portada.jpg);
+    background-size: cover;
+}
+
+header p {
+    text-align: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 60px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* NAV */
+
+.navbar-brand {
+    color: white;
+    padding-left: 30px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+#nav_ini {
+    color: white;
+    font-size: 20px;
+}
+
+#drop_nav {
+    color: white;
+    font-size: 20px;
+}
+
+
+/* CARDS */
+
+#productos_display {
+    padding-top: 40px;
+}
+
+.contenedor_productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 50px;
+    row-gap: 15px;
+    text-align: center;
+}
+
+.modal-body {
+    text-align: center;
+}
+
+/* PRECIOS */
+
+#Precios {
+    padding-top: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-weight: bolder;
+}
