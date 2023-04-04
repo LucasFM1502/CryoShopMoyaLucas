@@ -1,6 +1,7 @@
 class JuegosController {
   constructor() {
     this.listaJuegos = []
+    this.contenedor_productos = document.getElementById("productos_display")
   }
 
   levantar() {
@@ -19,7 +20,7 @@ class JuegosController {
 
   render() {
     this.listaJuegos.forEach(juego => {
-      contenedor_productos.innerHTML += `
+      this.contenedor_productos.innerHTML += `
       <div class="card" style="width: 18rem;">
           <img src="${juego.img}" class="card-img-top" alt="${juego.alt}">
           <div class="card-body">
@@ -210,12 +211,9 @@ controladorJuegos.juegosCargados()
 
 controladorCarrito.levantar()
 
-//Para el DOM
-const contenedor_productos = document.getElementById("productos_display")
-
 // PRODUCTOS EN APP
 
-controladorJuegos.render(contenedor_productos)
+controladorJuegos.render()
 controladorCarrito.render()
 
 // AGREGAR AL CARRITO
