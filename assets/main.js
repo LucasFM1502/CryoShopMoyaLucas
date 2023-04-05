@@ -13,7 +13,7 @@ class JuegosController {
   }
 
   async juegosCargados () {
-      let respuesta = await fetch('./APIJuegos.json')
+      let respuesta = await fetch('./assets/APIJuegos.json', {mode: "no-cors"})
       this.listaJuegos = await respuesta.json()
       this.render()
   }
@@ -35,31 +35,33 @@ class JuegosController {
     })
   }
 
-  eventoAgregar(controladorCarrito){
-    this.listaJuegos.forEach(juego => {
-      const futuraCompra = document.getElementById(`juego ${juego.id}`)
-      futuraCompra.addEventListener("click", () => {
-    
-        controladorCarrito.agregar(juego)
-        controladorCarrito.levantar()
-        controladorCarrito.render()
-        controladorCarrito.precioDOM()
-    
-        Toastify({
-          text: "Producto agregado al carrito.",
-          duration: 2000,
-          gravity: "bottom", // `top` or `bottom`
-          position: "right", // `left`, `center` or `right`
-          style: {
-            background: "linear-gradient(to right, #090979, #00d4ff)",
-          }
-        }).showToast();
-    
+  eventoAgregar(controladorCarrito) {
+      this.listaJuegos.forEach(juego => {
+        const futuraCompra = document.getElementById(`juego ${juego.id}`)
+        futuraCompra.addEventListener("click", () => {
+  
+          controladorCarrito.agregar(juego)
+          controladorCarrito.levantar()
+          controladorCarrito.render()
+          controladorCarrito.precioDOM()
+  
+          Toastify({
+            text: "Producto agregado al carrito.",
+            duration: 2000,
+            gravity: "bottom", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            style: {
+              background: "linear-gradient(to right, #090979, #00d4ff)",
+            }
+          }).showToast();
+      
+        })
       })
-    })
+    }
+  
   }
 
-}
+
 
 class CarritoController {
   constructor() {
@@ -203,21 +205,20 @@ class CarritoController {
 }
 
 //DECLARANDO CONTROLADORES Y LEVANTANDO JUEGOS
-const controladorJuegos = new JuegosController
-const controladorCarrito = new CarritoController
+const controladorJuegos = new JuegosController()
+const controladorCarrito = new CarritoController()
 
 controladorJuegos.levantar()
-controladorJuegos.juegosCargados()
-
 controladorCarrito.levantar()
+
+// TRAEMOS JUEGOS DE LA API, Y DAMOS FUNCIONALIDAD AL BOTON DE SU CARD
+controladorJuegos.juegosCargados().then(() => controladorJuegos.eventoAgregar(controladorCarrito))
 
 // PRODUCTOS EN APP
 
 controladorJuegos.render()
 controladorCarrito.render()
 
-// AGREGAR AL CARRITO
-controladorJuegos.eventoAgregar(controladorCarrito)
 
 // ALERT DE FINALIZACION DE COMPRA
 controladorCarrito.finalizarCompra()
