@@ -110,7 +110,7 @@ class CarritoController {
       <p class="card-text">$${juego.precio}</p>
       <p class="card-text"><small class="text-muted">${juego.descripcion}</small></p>
       <p class="card-text"><small class="text-muted">Cantidad: ${juego.cantidad}</small></p>
-      <button id="eliminar${juego.id}"><i class="fa-solid fa-trash-can"></i></button>
+      <button class="btn btn-danger" id="eliminar${juego.id}"><i class="fa-solid fa-trash-can"></i></button>
         </div>
       </div>
     </div>
