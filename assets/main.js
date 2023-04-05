@@ -12,23 +12,10 @@ class JuegosController {
     }
   }
 
-  async juegosCargados() {
-    try {
-      let respuesta = await fetch('./assets/APIJuegos.json', {
-        mode: "cors",
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        }
-      });
-      if (respuesta.ok) {
-        this.listaJuegos = await respuesta.json();
-        this.render();
-      } else {
-        console.log(`Error ${respuesta.status} al cargar los juegos.`);
-      }
-    } catch (error) {
-      console.log(`Error: ${error}`);
-    }
+  async juegosCargados () {
+      let respuesta = await fetch('./assets/APIJuegos.json')
+      this.listaJuegos = await respuesta.json()
+      this.render()
   }
 
   render() {
