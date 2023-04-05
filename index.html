@@ -130,18 +130,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title fs-5" id="exampleModalLabel">Carrito de Compras</h3>
+        <div class="boton_vaciar"><button class="btn btn-dark" id="vaciar_carrito"> Vaciar Carrito </button></div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="contenedor_carrito"></div>
       <div id="Precios">
         <p>Precio sin Impuestos: <span id="precio_sinIMP"></span></p>
         <p>Precio con Impuestos: <span id="precio_total"></span></p>
-      </div>
+      
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Seguir Comprando</button>
-        <button type="button" class="btn btn-danger" id="finalizar">Finalizar Compra</button>
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" id="seguir">Seguir Comprando</button>
+        <button type="button" class="btn btn-primary" id="finalizar">Finalizar Compra</button>
       </div>
+    </div>
     </div>
   </div>
 </div>

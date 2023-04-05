@@ -70,6 +70,7 @@ class CarritoController {
     this.finalizar_compra = document.getElementById("finalizar")
     this.precio_sinIMP = document.getElementById("precio_sinIMP")
     this.precio_total = document.getElementById("precio_total")
+    this.vaciar_carrito = document.getElementById("vaciar_carrito")
   }
 
   levantar() {
@@ -202,6 +203,12 @@ class CarritoController {
     this.precioDOM()
   }
   
+  vaciarCarrito(){
+    this.vaciar_carrito.addEventListener( "click", () => {
+        this.limpiar()
+        this.render()
+    })
+  }
 }
 
 //DECLARANDO CONTROLADORES Y LEVANTANDO JUEGOS
@@ -223,3 +230,5 @@ controladorCarrito.render()
 // ALERT DE FINALIZACION DE COMPRA
 controladorCarrito.finalizarCompra()
 
+// EVENTO A VACIAR CARRITO
+controladorCarrito.vaciarCarrito()

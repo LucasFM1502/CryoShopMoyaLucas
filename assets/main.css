@@ -62,15 +62,6 @@ header p {
     text-align: center;
 }
 
-/* PRECIOS */
-
-#Precios {
-    padding-top: 10px;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    font-weight: bolder;
-}
-
 /* FOOTER */
 
 #footer {
@@ -104,6 +95,7 @@ header p {
 .enlaces a:hover {
     color: lightskyblue;
 }
+
 
 /* FOOTER RESPONSIVE */
 @media only screen and (min-width: 800px ) {
@@ -170,4 +162,36 @@ header p {
 
 #socialICONS a :hover {
     color: lightskyblue;
+}
+
+/* MODAL CARRITO */
+
+#Precios {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    background-color: black;
+    font-weight: bolder;
+    padding: 20px 20px 20px 20px;
+   }
+
+
+.boton_vaciar {
+    padding-left: 125px;
+}
+
+.modal-footer {
+    padding-top: 20px;
+}
+
+.modal-header {
+    background-color: black;
+}
+
+#exampleModalLabel {
+    color: white;
 }
